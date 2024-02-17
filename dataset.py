@@ -214,7 +214,7 @@ if __name__ == "__main__":
     n_batch = 0
     for batchs in train_loader:
         for batch in batchs:
-            to_device(batch, device)
+            to_device(batch, device,[])
             n_batch += 1
     print(
         "Training set  with size {} is composed of {} batches.".format(
@@ -225,7 +225,7 @@ if __name__ == "__main__":
     n_batch = 0
     for batchs in val_loader:
         for batch in batchs:
-            to_device(batch, device)
+            to_device(batch, device,[])
             n_batch += 1
     print(
         "Validation set  with size {} is composed of {} batches.".format(
