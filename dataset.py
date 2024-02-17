@@ -172,9 +172,9 @@ if __name__ == "__main__":
     # Test
     import torch
     import yaml
-    from torch.utils.data import DataLoader
+    from torch.utils.data import DataLoader,RandomSampler
     from utils.tools import to_device
-
+   
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     preprocess_config = yaml.load(
         open("/kaggle/working/Parallel-Tacotron2/config/LJSpeech/preprocess.yaml", "r"), Loader=yaml.FullLoader
@@ -189,9 +189,21 @@ if __name__ == "__main__":
     val_dataset = Dataset(
         "val.txt", preprocess_config, train_config, sort=False, drop_last=False
     )
+    # Get the number of samples in your dataset
+    num_samples = len(train_dataset)
+    print("num_samples",num_samples)
+    # Check if num_samples is greater than 0
+    if num_samples > 0:
+        # Create a sampler with the correct num_samples
+        sampler_t = RandomSampler(train_dataset, replacement=True, num_samples=num_samples)
+        sampler_v = RandomSampler(val_dataset, replacement=True, num_samples=num_samples)
+    else:
+        raise ValueError("Number of samples in the dataset must be greater than 0.")
+
     train_loader = DataLoader(
         train_dataset,
         batch_size=train_config["optimizer"]["batch_size"] * 4,
+        sampler=sampler_t,
         shuffle=True,
         collate_fn=train_dataset.collate_fn,
     )
@@ -199,6 +211,7 @@ if __name__ == "__main__":
         val_dataset,
         batch_size=train_config["optimizer"]["batch_size"],
         shuffle=False,
+        sampler=sampler_v
         collate_fn=val_dataset.collate_fn,
     )
 
