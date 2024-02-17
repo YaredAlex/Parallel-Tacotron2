@@ -7,7 +7,7 @@ import numpy as np
 import hifigan
 from model import ParallelTacotron2, ScheduledOptim
 
-new_path = '/kaggle/working/Parallel-Tacotron2'
+new_path = '/kaggle/working/Parallel-Tacotron2/'
 def get_model(args, configs, device, train=False):
     (preprocess_config, model_config, train_config) = configs
 
