@@ -1,15 +1,12 @@
 import json
 import math
 import os
-
 import numpy as np
-from torch.utils.data import Dataset
-
+import torch
 from text import text_to_sequence
 from utils.tools import pad_1D, pad_2D
 
-
-class Dataset(Dataset):
+class Dataset(torch.utils.data.Dataset):
     def __init__(
         self, filename, preprocess_config, train_config, sort=False, drop_last=False
     ):
@@ -25,6 +22,7 @@ class Dataset(Dataset):
             self.speaker_map = json.load(f)
         self.sort = sort
         self.drop_last = drop_last
+        print("text_len is ",len(self.text))
 
     def __len__(self):
         return len(self.text)
