@@ -7,7 +7,7 @@ import numpy as np
 import hifigan
 from model import ParallelTacotron2, ScheduledOptim
 
-
+new_path = '/kaggle/working/Parallel-Tacotron2'
 def get_model(args, configs, device, train=False):
     (preprocess_config, model_config, train_config) = configs
 
@@ -55,14 +55,14 @@ def get_vocoder(config, device):
         vocoder.mel2wav.eval()
         vocoder.mel2wav.to(device)
     elif name == "HiFi-GAN":
-        with open("hifigan/config.json", "r") as f:
+        with open(new_path+"hifigan/config.json", "r") as f:
             config = json.load(f)
         config = hifigan.AttrDict(config)
         vocoder = hifigan.Generator(config)
         if speaker == "LJSpeech":
-            ckpt = torch.load("hifigan/generator_LJSpeech.pth.tar")
+            ckpt = torch.load(new_path+"hifigan/generator_LJSpeech.pth.tar")
         elif speaker == "universal":
-            ckpt = torch.load("hifigan/generator_universal.pth.tar")
+            ckpt = torch.load(new_path+"hifigan/generator_universal.pth.tar")
         vocoder.load_state_dict(ckpt["generator"])
         vocoder.eval()
         vocoder.remove_weight_norm()
