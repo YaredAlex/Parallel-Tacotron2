@@ -46,7 +46,7 @@ def main(args, configs):
 
     # Prepare model
     model, optimizer = get_model(args, configs, device, train=True)
-    model = nn.DataParallel(model)
+    # model = nn.DataParallel(model)
     num_param = get_param_num(model)
     Loss = ParallelTacotron2Loss(model_config, train_config).to(device)
     print("Number of Parallel Tacotron 2 Parameters:", num_param)
