@@ -184,10 +184,10 @@ if __name__ == "__main__":
     )
 
     train_dataset = Dataset(
-        "/kaggle/working/preprocessed_data/LJSpeech/train.txt", preprocess_config, train_config, sort=True, drop_last=True
+        "train.txt", preprocess_config, train_config, sort=True, drop_last=True
     )
     val_dataset = Dataset(
-        "/kaggle/working/preprocessed_data/LJSpeech/val.txt", preprocess_config, train_config, sort=False, drop_last=False
+        "val.txt", preprocess_config, train_config, sort=False, drop_last=False
     )
     train_loader = DataLoader(
         train_dataset,
