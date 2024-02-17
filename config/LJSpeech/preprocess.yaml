@@ -6,7 +6,7 @@ path:
   preprocessed_path: "/kaggle/working/preprocessed_data/LJSpeech"
 
 preprocessing:
-  val_size: 512
+  val_size: 51
   text:
     text_cleaners: ["english_cleaners"]
     language: "en"
