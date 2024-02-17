@@ -1,7 +1,7 @@
 path:
-  ckpt_path: "./output/ckpt/LJSpeech"
-  log_path: "./output/log/LJSpeech"
-  result_path: "./output/result/LJSpeech"
+  ckpt_path: "/kaggle/working/output/ckpt/LJSpeech"
+  log_path: "/kaggle/working/output/log/LJSpeech"
+  result_path: "/kaggle/working/output/result/LJSpeech"
 loss:
   gamma: 0.05
   warp: 128
