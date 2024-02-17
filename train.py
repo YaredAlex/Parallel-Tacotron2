@@ -29,7 +29,7 @@ def main(args, configs):
         "train.txt", preprocess_config, train_config, sort=True, drop_last=True
     )
     batch_size = train_config["optimizer"]["batch_size"]
-    group_size = 2  # Set this larger than 1 to enable sorting in Dataset
+    group_size = 4  # Set this larger than 1 to enable sorting in Dataset
     print("len of data is ",len(dataset),f' len of batch is {batch_size} group_size is {group_size}')
     assert batch_size * group_size < len(dataset)
     loader = DataLoader(
