@@ -189,7 +189,7 @@ if __name__ == "__main__":
     )
     # Get the number of samples in your dataset
     num_samples = len(train_dataset)
-    print("num_samples",num_samples)
+    print("train num_samples",num_samples," val lenght is ",len(val_dataset))
     # Check if num_samples is greater than 0
     if num_samples > 0:
         # Create a sampler with the correct num_samples
