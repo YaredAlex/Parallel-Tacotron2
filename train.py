@@ -85,7 +85,8 @@ def main(args, configs):
         for batchs in loader:
             for batch in batchs:
                 batch = to_device(batch, device, mel_stats)
-
+                print("hole batch",batch)
+                print("batch[2:] ",batch[2:])
                 # Forward
                 output = model(*(batch[2:]))
                 # Cal Loss
