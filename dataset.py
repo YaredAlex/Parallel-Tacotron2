@@ -211,7 +211,7 @@ if __name__ == "__main__":
         val_dataset,
         batch_size=train_config["optimizer"]["batch_size"],
         shuffle=False,
-        sampler=sampler_v
+        sampler=sampler_v,
         collate_fn=val_dataset.collate_fn,
     )
 
