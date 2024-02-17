@@ -201,7 +201,6 @@ if __name__ == "__main__":
     train_loader = DataLoader(
         train_dataset,
         batch_size=train_config["optimizer"]["batch_size"] * 4,
-        sampler=sampler_t,
         shuffle=True,
         collate_fn=train_dataset.collate_fn,
     )
@@ -209,7 +208,6 @@ if __name__ == "__main__":
         val_dataset,
         batch_size=train_config["optimizer"]["batch_size"],
         shuffle=False,
-        sampler=sampler_v,
         collate_fn=val_dataset.collate_fn,
     )
 
